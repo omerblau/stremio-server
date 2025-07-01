@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  stremio:
+    image: tsaridas/stremio-docker:latest
+    container_name: stremio-full
+    ports:
+      - "8080:8080"  # Web UI + Backend on same port
+    environment:
+      - NO_CORS=1
+      - AUTO_SERVER_URL=1
+    volumes:
+      - stremio-data:/root/.stremio-server
+    restart: unless-stopped
+
+volumes:
+  stremio-data:
